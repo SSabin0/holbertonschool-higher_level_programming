@@ -2,10 +2,11 @@
 if __name__ == "__main__":
     import sys
 
-    argv = sys.argv[1:]  # Exclude the script name
+    # Get arguments excluding the script name
+    argv = sys.argv[1:]
     count = len(argv)
 
-    # Print the header line
+    # Logic for header punctuation and pluralization
     if count == 0:
         print("0 arguments.")
     elif count == 1:
@@ -13,6 +14,6 @@ if __name__ == "__main__":
     else:
         print("{} arguments:".format(count))
 
-    # Print each argument with its position
+    # Print each argument with its 1-based index
     for i in range(count):
         print("{}: {}".format(i + 1, argv[i]))
