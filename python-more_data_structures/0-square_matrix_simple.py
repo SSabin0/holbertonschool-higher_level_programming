@@ -9,7 +9,7 @@ def square_matrix_simple(matrix=[]):
         for i in range(len(row)):
             # 2. Square the number and add it to the row container
             new_row.append(row[i] ** 2)
-        
+
         # 3. Append the completed row list into our main matrix grid
         new_matrix.append(new_row)
 
