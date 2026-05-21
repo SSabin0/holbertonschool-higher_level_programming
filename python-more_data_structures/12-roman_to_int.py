@@ -13,10 +13,8 @@ def roman_to_int(roman_string):
     for i in range(length):
         current_val = roman_dict.get(roman_string[i], 0)
 
-        # Look ahead to the next numeral if it exists
         if i + 1 < length and current_val < roman_dict.get(roman_string[i + 1], 0):
             total -= current_val
         else:
             total += current_val
-
     return total
