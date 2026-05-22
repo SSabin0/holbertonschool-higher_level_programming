@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This is the 1-matrix_divided module.
+This is the 2-matrix_divided module.
 
 The module provides a single function, matrix_divided(matrix, div), which
 validates a matrix and a divisor, then returns a newly divided matrix.
@@ -50,5 +50,16 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # 4. Generate the new matrix dynamically using a nested list comprehension
-    return [[round(item / div, 2) for item in row] for row in matrix]
+    # 4. Generate the new matrix, handling rounding and the -0.0 infinity edge case
+    new_matrix = []
+    for row in matrix:
+        new_row = []
+        for item in row:
+            val = round(item / div, 2)
+            # Standardize -0.0 to 0.0 if divided by negative infinity
+            if val == 0.0:
+                val = 0.0
+            new_row.append(val)
+        new_matrix.append(new_row)
+
+    return new_matrix
