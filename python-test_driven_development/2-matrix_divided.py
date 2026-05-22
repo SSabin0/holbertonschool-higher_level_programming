@@ -38,7 +38,9 @@ def matrix_divided(matrix, div):
         if row_size is None:
             row_size = len(row)
         elif len(row) != row_size:
-            raise TypeError("Each row of the matrix must have the same size")
+            raise TypeError(
+                "Each row of the matrix must have the same size"
+            )
 
         for element in row:
             if not isinstance(element, (int, float)):
@@ -50,7 +52,7 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # 4. Generate the new matrix, handling rounding and the -0.0 infinity edge case
+    # 4. Generate the new matrix, handling rounding and the -0.0 edge case
     new_matrix = []
     for row in matrix:
         new_row = []
