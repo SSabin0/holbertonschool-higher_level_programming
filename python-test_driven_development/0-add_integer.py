@@ -19,15 +19,21 @@ def add_integer(a, b=98):
         The integer sum of a and b.
 
     Raises:
-        TypeError: If either a or b is not an integer or a float.
-        OverflowError: If a or b is infinity.
+        TypeError: If either a or b is not an integer, float, or is NaN.
     """
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    # Catch float infinity edge cases before casting causes a crash
+    # A completely bulletproof way to catch NaN without math module:
+    # Converting float('nan') to a string always results in 'nan'
+    if str(a) == "nan":
+        raise TypeError("a must be an integer")
+    if str(b) == "nan":
+        raise TypeError("b must be an integer")
+
+    # Catch float infinity edge cases before casting causes an OverflowError
     if a == float('inf') or a == float('-inf'):
         raise OverflowError("cannot convert float infinity to integer")
     if b == float('inf') or b == float('-inf'):
