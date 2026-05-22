@@ -51,3 +51,15 @@ Handling Non-Integer / Non-Float Inputs (TypeErrors):
     Traceback (most recent call last):
     ...
     TypeError: a must be an integer
+
+    >>> try:
+    ...     add_integer(float('inf'), 4)
+    ... except Exception as e:
+    ...     print(type(e).__name__)
+    OverflowError
+
+    >>> try:
+    ...     add_integer(10, float('-inf'))
+    ... except Exception as e:
+    ...     print(type(e).__name__)
+    OverflowError

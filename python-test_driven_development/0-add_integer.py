@@ -20,10 +20,17 @@ def add_integer(a, b=98):
 
     Raises:
         TypeError: If either a or b is not an integer or a float.
+        OverflowError: If a or b is infinity.
     """
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    return int(a) + int(b) 
+    # Catch float infinity edge cases before casting causes a crash
+    if a == float('inf') or a == float('-inf'):
+        raise OverflowError("cannot convert float infinity to integer")
+    if b == float('inf') or b == float('-inf'):
+        raise OverflowError("cannot convert float infinity to integer")
+
+    return int(a) + int(b)
