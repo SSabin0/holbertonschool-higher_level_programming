@@ -63,3 +63,14 @@ Handling Non-Integer / Non-Float Inputs (TypeErrors):
     ... except Exception as e:
     ...     print(type(e).__name__)
     OverflowError
+    >>> try:
+    ...     add_integer(float('nan'), 4)
+    ... except Exception as e:
+    ...     print(e)
+    a must be an integer
+
+    >>> try:
+    ...     add_integer(10, float('nan'))
+    ... except Exception as e:
+    ...     print(e)
+    b must be an integer
