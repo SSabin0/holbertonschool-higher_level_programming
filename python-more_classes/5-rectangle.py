@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that defines a Rectangle class with string and eval support."""
+"""Module that defines a Rectangle class with instance deletion detection."""
 
 
 class Rectangle:
@@ -58,3 +58,7 @@ class Rectangle:
     def __repr__(self):
         """Return a string representation to recreate the instance."""
         return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """Print a message when an instance of Rectangle is deleted."""
+        print("Bye rectangle...")
