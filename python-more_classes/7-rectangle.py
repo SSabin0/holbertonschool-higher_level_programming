@@ -4,6 +4,7 @@
 
 class Rectangle:
     """A class that represents a rectangle."""
+
     number_of_instances = 0
     print_symbol = "#"
 
@@ -55,10 +56,8 @@ class Rectangle:
         """Return a string representation of the rectangle."""
         if self.width == 0 or self.height == 0:
             return ""
-        
-        # Casting print_symbol to str handles lists perfectly for your expected output
+
         row = str(self.print_symbol) * self.width
-            
         rect_rows = [row for _ in range(self.height)]
         return "\n".join(rect_rows)
 
