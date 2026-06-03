@@ -1,0 +1,35 @@
+===============================
+How to use the MyList class
+===============================
+
+First, import the class from the module:
+    >>> MyList = __import__('1-my_list').MyList
+
+Test 1: Check basic initialization and printing an empty list
+    >>> my_list = MyList()
+    >>> print(my_list)
+    []
+    >>> my_list.print_sorted()
+    []
+
+Test 2: Appending elements out of order and verifying print_sorted works
+    >>> my_list.append(5)
+    >>> my_list.append(1)
+    >>> my_list.append(3)
+    >>> my_list.append(2)
+    >>> my_list.append(4)
+    >>> print(my_list)
+    [5, 1, 3, 2, 4]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+Test 3: Confirm that the original list remains unsorted after running print_sorted
+    >>> print(my_list)
+    [5, 1, 3, 2, 4]
+
+Test 4: Check handling of negative numbers
+    >>> negative_list = MyList([-1, -5, 0, 10, 2])
+    >>> negative_list.print_sorted()
+    [-5, -1, 0, 2, 10]
+    >>> print(negative_list)
+    [-1, -5, 0, 10, 2]
