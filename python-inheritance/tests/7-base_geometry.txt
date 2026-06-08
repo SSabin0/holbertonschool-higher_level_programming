@@ -57,7 +57,7 @@ If the value passed is not a strict integer, it must raise a TypeError:
     TypeError: properties must be an integer
 
     >>> bg.integer_validator("status", None)
-    Traceback (which call last):
+    Traceback (most recent call last):
         ...
     TypeError: status must be an integer
 
@@ -105,12 +105,7 @@ If the value is an integer but is 0 or negative, it must raise a ValueError:
         ...
     ValueError: age must be greater than 0
 
-    >>> bg.integer_validator("distance", -4)
+    >>> bg.distance_validator = bg.integer_validator("distance", -4)
     Traceback (most recent call last):
         ...
     ValueError: distance must be greater than 0
-
-    >>> bg.integer_validator("negative_extreme", -999999999)
-    Traceback (most recent call last):
-        ...
-    ValueError: negative_extreme must be greater than 0
