@@ -57,7 +57,7 @@ If the value passed is not a strict integer, it must raise a TypeError:
     TypeError: properties must be an integer
 
     >>> bg.integer_validator("status", None)
-    Traceback (most recent call last):
+    Traceback (which call last):
         ...
     TypeError: status must be an integer
 
@@ -67,6 +67,33 @@ Booleans inherit from integers in Python, but type() strict-checking catches the
     Traceback (most recent call last):
         ...
     TypeError: is_active must be an integer
+
+Testing sets and tuples as value parameters:
+
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+        ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", (4,))
+    Traceback (most recent call last):
+        ...
+    TypeError: age must be an integer
+
+===============================
+Testing Missing Arguments (TypeError)
+===============================
+If required arguments are completely missing, Python's native TypeError is raised:
+
+    >>> bg.integer_validator("age")
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 ===============================
 Testing Out-of-Bounds Inputs (ValueError)
