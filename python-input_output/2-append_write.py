@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module contains a function that appends a string to a text file (UTF8)
+Appends a string to a text file (UTF8)
 and returns the number of characters added.
 """
 
