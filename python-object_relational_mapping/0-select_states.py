@@ -3,7 +3,6 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    # Connect to the MySQL server
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -11,18 +10,10 @@ if __name__ == "__main__":
         passwd=sys.argv[2],
         db=sys.argv[3]
     )
-    
-    # Create a cursor object
     cursor = db.cursor()
-    
-    # Execute the query
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
-    
-    # Fetch and print results
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-        
-    # Close resources
     cursor.close()
     db.close()
