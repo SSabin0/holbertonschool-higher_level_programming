@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Script that safely lists all states matching a user-supplied name."""
+
 import MySQLdb
 import sys
+
 
 if __name__ == "__main__":
     conn = MySQLdb.connect(
@@ -13,7 +15,15 @@ if __name__ == "__main__":
         charset="utf8"
     )
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (sys.argv[4],))
+    cur.execute("""
+        SELECT *
+        FROM states
+        WHERE BINARY name=%(state)s
+        ORDER BY id ASC
+        """, {
+            'state': sys.argv[4]
+        })
+
     rows = cur.fetchall()
     for row in rows:
         print(row)
